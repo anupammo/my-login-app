@@ -1,16 +1,18 @@
 // src/app/layout.tsx
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './globals.css';
+'use client';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import { SessionProvider } from 'next-auth/react';
+// import './globals.css';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
-      <head />
-      <body>{children}</body>
+    <html lang="en">
+      <body>
+        <SessionProvider>
+          {children}
+        </SessionProvider>
+      </body>
     </html>
   );
 }
