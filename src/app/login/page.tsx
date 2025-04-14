@@ -1,3 +1,4 @@
+// src/app/login/page.tsx
 'use client';
 
 import { useState } from "react";
@@ -22,7 +23,7 @@ export default function LoginPage() {
     if (res?.error) {
       setErrorMsg(res.error);
     } else {
-      router.push("/profile/view");
+      router.push("/profile/view"); // Redirect to the new URL for profile view
     }
   };
 
@@ -42,9 +43,7 @@ export default function LoginPage() {
               )}
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label htmlFor="username" className="form-label">
-                    Username
-                  </label>
+                  <label htmlFor="username" className="form-label">Username</label>
                   <input
                     type="text"
                     className="form-control"
@@ -56,9 +55,7 @@ export default function LoginPage() {
                   />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="password" className="form-label">
-                    Password
-                  </label>
+                  <label htmlFor="password" className="form-label">Password</label>
                   <input
                     type="password"
                     className="form-control"
@@ -69,17 +66,12 @@ export default function LoginPage() {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-primary w-100">
-                  Login
-                </button>
+                <button type="submit" className="btn btn-primary w-100">Login</button>
               </form>
             </div>
             <div className="card-footer text-center">
               <small className="text-muted">
-                Don't have an account?{" "}
-                <a href="/signup" className="text-decoration-none">
-                  Sign Up
-                </a>
+                Don't have an account? <a href="/signup" className="text-decoration-none">Sign Up</a>
               </small>
             </div>
           </div>

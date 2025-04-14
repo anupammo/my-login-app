@@ -1,10 +1,10 @@
 // src/app/api/auth/[...nextauth]/route.ts
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import db from "@/lib/db";
+import db from "@/lib/db"; // Import your database helper
 import bcrypt from "bcrypt";
 
-const handler = NextAuth({
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -13,45 +13,64 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // Look up the user in your MySQL DB
-        const [rows]: any = await db.query("SELECT * FROM users WHERE username = ?", [
-          credentials?.username?.trim(),
-        ]);
+        if (!credentials?.username || !credentials.password) {
+          throw new Error("Please provide both username and password.");
+        }
+
+        const [rows]: any = await db.query(
+          "SELECT * FROM users WHERE username = ?",
+          [credentials.username.trim()]
+        );
+
         if (!rows.length) {
-          throw new Error("Invalid username or password");
+          throw new Error("Invalid username or password.");
         }
 
         const user = rows[0];
-        const isValid = await bcrypt.compare(credentials!.password.trim(), user.password_hash);
-        if (!isValid) {
-          throw new Error("Invalid username or password");
+
+        const isPasswordValid = await bcrypt.compare(
+          credentials.password.trim(),
+          user.password_hash
+        );
+
+        if (!isPasswordValid) {
+          throw new Error("Invalid username or password.");
         }
 
-        // Return user data (exclude sensitive fields as needed)
-        return { id: user.id, name: user.username, email: user.email };
+        return {
+          id: user.id,
+          name: user.username,
+          email: user.email,
+        };
       },
     }),
   ],
   session: {
-    strategy: "jwt",
+    strategy: "jwt" as const, // Explicitly use "jwt" for type compatibility
+    maxAge: 30 * 24 * 60 * 60, // Session lifetime (30 days)
   },
   callbacks: {
-    async session({ session, token }) {
-      // Add user ID and other relevant fields to the session object
+    async jwt({ token, user }: { token: any; user?: any }) {
+      if (user) {
+        token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
+      }
+      return token;
+    },
+    async session({ session, token }: { session: any; token: any }) {
       if (token) {
         session.user = {
-          ...session.user,
-          id: token.id as number,
-          name: token.name as string,
-          email: token.email as string,
+          id: token.id,
+          name: token.name,
+          email: token.email,
         };
       }
       return session;
     },
-  },  
-  pages: {
-    signIn: "/login", // Use our custom login page
   },
-});
+  secret: process.env.NEXTAUTH_SECRET, // Ensure this is set properly
+};
 
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

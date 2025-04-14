@@ -1,27 +1,47 @@
-// src/app/profile/page.tsx
+// src/app/profile/view/page.tsx
 'use client';
 
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import LogoutButton from "@/components/LogoutButton";
 
-export default function ProfilePage() {
-  const { data: session, status } = useSession();
+export default function ProfileViewPage() {
+  const [profile, setProfile] = useState<{ id: number; name: string; email: string } | null>(null);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  // Redirect to login if the user is unauthenticated
-  useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/login');
+  const fetchProfile = async () => {
+    try {
+      const res = await fetch("/api/profile");
+      if (!res.ok) throw new Error("Failed to fetch profile");
+      const data = await res.json();
+      setProfile(data);
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+      router.push("/login");
+    } finally {
+      setLoading(false);
     }
-  }, [status, router]);
+  };
 
-  if (status === 'loading') {
-    return <div className="container mt-5">Loading...</div>;
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+
+  if (loading) {
+    return <div className="container mt-5 text-center">Loading...</div>;
   }
-  if (!session || !session.user) {
-    return <div className="container mt-5">No user data found.</div>;
+
+  if (!profile) {
+    return (
+      <div className="container mt-5 text-center">
+        <p>No profile data available.</p>
+        <Link href="/login">
+          <button className="btn btn-primary">Go to Login</button>
+        </Link>
+      </div>
+    );
   }
 
   return (
@@ -31,10 +51,12 @@ export default function ProfilePage() {
           <h3>User Profile</h3>
         </div>
         <div className="card-body">
-          <h4>Welcome, {session.user.name}</h4>
+          <h4>Welcome, {profile.name}</h4>
           <p>
-            <strong>Email:</strong> {session.user.email}
+            <strong>Email:</strong> {profile.email}
           </p>
+          {/* Include Logout Button */}
+          <LogoutButton />
         </div>
         <div className="card-footer text-center">
           <Link href="/profile/edit">

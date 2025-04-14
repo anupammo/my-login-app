@@ -1,3 +1,4 @@
+// src/app/signup/page.tsx
 'use client';
 
 import { useState } from "react";
@@ -29,7 +30,7 @@ export default function SignupPage() {
 
       if (response.ok) {
         setSuccessMsg("Account created successfully! Redirecting to login...");
-        setTimeout(() => router.push("/login"), 2000); // Redirect to login page after 2 seconds
+        setTimeout(() => router.push("/login"), 2000);
       } else {
         setErrorMsg(data.error || "Failed to create account.");
       }
@@ -60,9 +61,7 @@ export default function SignupPage() {
               )}
               <form onSubmit={handleSignup}>
                 <div className="mb-3">
-                  <label htmlFor="username" className="form-label">
-                    Username
-                  </label>
+                  <label htmlFor="username" className="form-label">Username</label>
                   <input
                     type="text"
                     className="form-control"
@@ -74,9 +73,7 @@ export default function SignupPage() {
                   />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="email" className="form-label">
-                    Email
-                  </label>
+                  <label htmlFor="email" className="form-label">Email</label>
                   <input
                     type="email"
                     className="form-control"
@@ -88,9 +85,7 @@ export default function SignupPage() {
                   />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="password" className="form-label">
-                    Password
-                  </label>
+                  <label htmlFor="password" className="form-label">Password</label>
                   <input
                     type="password"
                     className="form-control"
@@ -101,17 +96,12 @@ export default function SignupPage() {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-success w-100">
-                  Sign Up
-                </button>
+                <button type="submit" className="btn btn-success w-100">Sign Up</button>
               </form>
             </div>
             <div className="card-footer text-center">
               <small className="text-muted">
-                Already have an account?{" "}
-                <a href="/login" className="text-decoration-none">
-                  Login here
-                </a>
+                Already have an account? <a href="/login" className="text-decoration-none">Login here</a>
               </small>
             </div>
           </div>

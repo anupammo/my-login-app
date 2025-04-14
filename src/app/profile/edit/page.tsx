@@ -1,53 +1,71 @@
 // src/app/profile/edit/page.tsx
 'use client';
 
-import { useSession } from 'next-auth/react';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export default function EditProfilePage() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [username, setUsername] = useState<string>(''); // For display purposes
-  const [email, setEmail] = useState<string>('');
-  const [error, setError] = useState<string>('');
+
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [error, setError] = useState<string>("");
+
+  // Fetch the latest profile data from the DB (via an API endpoint)
+  const fetchProfileData = async () => {
+    try {
+      const res = await fetch("/api/profile");
+      if (!res.ok) {
+        throw new Error("Failed to fetch profile data");
+      }
+      const data = await res.json();
+      setUsername(data.name || "");
+      setEmail(data.email || "");
+    } catch (err) {
+      console.error("Error fetching profile data:", err);
+    }
+  };
 
   useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/login');
-    } else if (session) {
-      // Pre-fill the form with session data
-      setUsername(session.user.name || '');
-      setEmail(session.user.email || '');
+    if (status === "unauthenticated") {
+      router.push("/login");
+    } else if (status !== "loading") {
+      // Instead of using the stale session data directly,
+      // fetch fresh data from the API.
+      fetchProfileData();
     }
-  }, [session, status, router]);
+  }, [status, router]);
 
   const handleUpdateProfile = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     try {
-      const res = await fetch('/api/update-profile', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      // Update the profile in the database.
+      const res = await fetch("/api/update-profile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email.trim() }),
       });
       const data = await res.json();
 
       if (res.ok) {
-        // If update succeeds, redirect to profile view page.
-        router.push('/profile/view');
+        // Fetch the updated profile data.
+        await fetchProfileData();
+        // Redirect to the profile view page.
+        router.push("/profile/view");
       } else {
-        // If update fails, remain on the edit page and display the error.
-        setError(data.error || 'Failed to update profile.');
+        setError(data.error || "Failed to update profile.");
       }
     } catch (err) {
-      console.error('Error updating profile:', err);
-      setError('Something went wrong. Please try again.');
+      console.error("Error updating profile:", err);
+      setError("Something went wrong. Please try again.");
     }
   };
 
-  if (status === 'loading') {
+  if (status === "loading") {
     return <div className="container mt-5 text-center">Loading...</div>;
   }
 
@@ -87,7 +105,7 @@ export default function EditProfilePage() {
                     type="email"
                     className="form-control"
                     id="email"
-                    placeholder="Enter your email"
+                    placeholder="Enter your new email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -99,7 +117,9 @@ export default function EditProfilePage() {
               </form>
             </div>
             <div className="card-footer text-center">
-              <small className="text-muted">Ensure your details are accurate.</small>
+              <small className="text-muted">
+                Ensure your details are accurate.
+              </small>
             </div>
           </div>
         </div>
