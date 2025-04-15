@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <div className="main bg-image">
+    <div className="bg-image">
       <div className="stars">
         <div className="star"></div>
         <div className="star"></div>
@@ -21,6 +21,7 @@ export default function HomePage() {
         <div className="star"></div>
         <div className="star"></div>
         <div className="star"></div>
+        {/* <div className="star"></div>
         <div className="star"></div>
         <div className="star"></div>
         <div className="star"></div>
@@ -54,8 +55,7 @@ export default function HomePage() {
         <div className="star"></div>
         <div className="star"></div>
         <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
+        <div className="star"></div> */}
       </div>
       <header className='text-center'>
         <div className="container">
@@ -72,7 +72,7 @@ export default function HomePage() {
           </div>
         </div>
       </header>
-      <section className='vh-20'>
+      <section className='py-10'>
         <div className="container">
           <div className="row">
             <div className="col-md-3 col-12"></div>

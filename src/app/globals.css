@@ -8,8 +8,14 @@
 body div.bg-image {
   min-height: 100vh;
 }
-.p-10 {
+.py-10 {
   padding-top: 10vh;
+  /* padding-bottom: 5vh; */
+}
+
+.my-20 {
+  margin-top: 15vh; 
+  margin-bottom: 5vh;
 }
 
 .bg-image {

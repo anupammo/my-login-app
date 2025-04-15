@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import ShootingStarsBG from "@/components/ShootingStarsBG";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -41,70 +42,92 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card shadow-lg">
-            <div className="card-header bg-success text-white text-center">
-              <h3>Sign Up</h3>
-            </div>
-            <div className="card-body">
-              {errorMsg && (
-                <div className="alert alert-danger" role="alert">
-                  {errorMsg}
+    <div className="bg-image">
+      <ShootingStarsBG />
+      <div className="container">
+        <div className="row">
+          <div className="col-md-3"></div>
+          <div className="col-md-6">
+            <div className="card border-0 my-20">
+              <div className="card-body px-5">
+                <div className="row">
+                  <div className="col">
+                    <h3 className="lead text-success fw-bold fs-1 mt-3">Signup</h3>
+                    <hr className="border-success border-2 opacity-100 w-50" />
+                    <hr className="border-success border-2 opacity-100 w-25" />
+                  </div>
+                  <div className="col">
+                    <img className='img-fluid rounded-circle d-block mx-auto my-3' src="./img/login-now.png" width={120} alt="" />
+                  </div>
                 </div>
-              )}
-              {successMsg && (
-                <div className="alert alert-success" role="alert">
-                  {successMsg}
-                </div>
-              )}
-              <form onSubmit={handleSignup}>
-                <div className="mb-3">
-                  <label htmlFor="username" className="form-label">Username</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="username"
-                    placeholder="Choose a username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="email" className="form-label">Email</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="password" className="form-label">Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    placeholder="Create a password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </div>
-                <button type="submit" className="btn btn-success w-100">Sign Up</button>
-              </form>
-            </div>
-            <div className="card-footer text-center">
-              <small className="text-muted">
-                Already have an account? <a href="/login" className="text-decoration-none">Login here</a>
-              </small>
+                {errorMsg && (
+                  <div className="alert alert-danger" role="alert">
+                    {errorMsg}
+                  </div>
+                )}
+                {successMsg && (
+                  <div className="alert alert-success" role="alert">
+                    {successMsg}
+                  </div>
+                )}
+                <form onSubmit={handleSignup}>
+                  <div className="row">
+                    <div className="col">
+                      <div className="mb-3">
+                        <label htmlFor="username" className="form-label">Username</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="username"
+                          placeholder="Choose a username"
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="mb-3">
+                        <label htmlFor="email" className="form-label">Email</label>
+                        <input
+                          type="email"
+                          className="form-control"
+                          id="email"
+                          placeholder="Enter your email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col">
+                      <div className="mb-3">
+                        <label htmlFor="password" className="form-label">Password</label>
+                        <input
+                          type="password"
+                          className="form-control"
+                          id="password"
+                          placeholder="Create a password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="col pt-2">
+                      <button type="submit" className="btn btn-outline-success w-100 mt-4">Sign Up</button>
+                    </div>
+                  </div>
+                </form>
+                <p className="text-muted mt-3">
+                  Already have an account? <a href="/login" className="text-decoration-none">Login here</a>
+                </p>
+              </div>
             </div>
           </div>
+          <div className="col-md-3"></div>
         </div>
       </div>
     </div>
