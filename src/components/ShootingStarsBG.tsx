@@ -4,6 +4,7 @@
 export default function ShootingStarsBG() {
 
   return (
+    <>
     <div className="stars">
       <div className="star"></div>
       <div className="star"></div>
@@ -21,40 +22,41 @@ export default function ShootingStarsBG() {
       <div className="star"></div>
       <div className="star"></div>
       {/* <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div>
-      <div className="star"></div> */}
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div>
+    <div className="star"></div> */}
     </div>
+    <div className="rocks-bg"></div></>
   );
 }

@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ShootingStarsBG from "@/components/ShootingStarsBG";
 
@@ -33,18 +34,18 @@ export default function LoginPage() {
       <ShootingStarsBG />
       <div className="container">
         <div className="row">
-          <div className="col-md-4"></div>
-          <div className="col-md-4">
-            <div className="card border-0 my-20">
+          <div className="col-md-3 col-12"></div>
+          <div className="col-md-6 col-12">
+            <div className="card text-white my-20">
               <div className="card-body px-5">
                 <div className="row">
                   <div className="col">
-                    <h3 className="lead text-success fw-bold fs-3 mt-3">Login now</h3>
-                    <hr className="border-success border-2 opacity-100 w-50" />
-                    <hr className="border-success border-2 opacity-100 w-25" />
+                    <h3 className="lead text-white fw-bold fs-3 mt-5">Login now</h3>
+                    <hr className="border-2 opacity-100 w-50" />
+                    <hr className="border-2 opacity-100 w-25" />
                   </div>
                   <div className="col">
-                    <img className='img-fluid rounded-circle my-3' src="./img/login-now.png" width={120} alt="" />
+                    <img className='img-fluid rounded-circle d-block mx-auto my-3' src="./img/login-now.png" width={150} alt="" />
                   </div>
                 </div>
                 {errorMsg && (
@@ -53,39 +54,50 @@ export default function LoginPage() {
                   </div>
                 )}
                 <form onSubmit={handleSubmit}>
-                  <div className="mb-3">
-                    <label htmlFor="username" className="form-label">Username</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="username"
-                      placeholder="Enter your username"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                    />
+                  <div className="row">
+                    <div className="col">
+                      <div className="mb-3">
+                        <label htmlFor="username" className="form-label">Username</label>
+                        <input
+                          type="text"
+                          className="form-control shadow-none bg-transparent text-white border-bottom border-0 rounded-0 px-0"
+                          id="username"
+                          placeholder="Enter your username"
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="mb-3">
+                        <label htmlFor="password" className="form-label">Password</label>
+                        <input
+                          type="password"
+                          className="form-control shadow-none bg-transparent text-white border-bottom border-0 rounded-0 px-0"
+                          id="password"
+                          placeholder="Enter your password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          required
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="password"
-                      placeholder="Enter your password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <button type="submit" className="btn btn-outline-primary w-100">Login</button>
+                  <p className="text-center my-4">
+                    <button type="submit" className="btn btn-light shadow-none rounded-0 px-5 me-4">Login</button>
+                    <Link href='/'>
+                      <button className="btn btn-outline-light shadow-none rounded-0 px-5">Home</button>
+                    </Link>
+                  </p>
                 </form>
-                <p className="text-muted mt-3">
+                <p className="text-center mt-3">
                   Don't have an account? <a href="/signup" className="text-decoration-none">Sign Up</a>
                 </p>
               </div>
             </div>
           </div>
-          <div className="col-md-4"></div>
+          <div className="col-md-3 col-12"></div>
         </div>
       </div>
     </div>

@@ -1,0 +1,68 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Night sky background -->
+  <rect width="800" height="450" fill="#ffffff00" />
+
+  <!-- Define animations for twinkling stars -->
+  <style>
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .set1 {
+      animation: twinkle 2s infinite;
+    }
+    .set2 {
+      animation: twinkle 2s infinite;
+      animation-delay: 0.5s;
+    }
+    .set3 {
+      animation: twinkle 2s infinite;
+      animation-delay: 1s;
+    }
+  </style>
+
+  <!-- Stars -->
+  <!-- Set 1 -->
+  <circle cx="50" cy="50" r="2" fill="#ffffff" class="set1" />
+  <circle cx="200" cy="80" r="3" fill="#ffffff" class="set1" />
+  <circle cx="303" cy="150" r="2.5" fill="#ffffff" class="set1" />
+  <circle cx="104" cy="300" r="2" fill="#ffffff" class="set1" />
+  <circle cx="351" cy="250" r="3.5" fill="#ffffff" class="set1" />
+  <circle cx="115" cy="50" r="2" fill="#ffffff" class="set1" />
+  <circle cx="202" cy="80" r="3" fill="#ffffff" class="set1" />
+  <circle cx="300" cy="150" r="2.5" fill="#ffffff" class="set1" />
+  <circle cx="100" cy="300" r="2" fill="#ffffff" class="set1" />
+  <circle cx="350" cy="250" r="3.5" fill="#ffffff" class="set1" />
+  <circle cx="127" cy="400" r="2" fill="#ffffff" class="set1" />
+
+  <!-- Set 2 -->
+  <circle cx="120" cy="300" r="2" fill="#ffffff" class="set2" />
+  <circle cx="180" cy="128" r="2.5" fill="#ffffff" class="set2" />
+  <circle cx="400" cy="120" r="3" fill="#ffffff" class="set2" />
+  <circle cx="702" cy="180" r="2" fill="#ffffff" class="set2" />
+  <circle cx="233" cy="300" r="3" fill="#ffffff" class="set2" />
+  <circle cx="184" cy="170" r="2.5" fill="#ffffff" class="set2" />
+  <circle cx="405" cy="133" r="3" fill="#ffffff" class="set2" />
+  <circle cx="700" cy="80" r="2" fill="#ffffff" class="set2" />
+  <circle cx="600" cy="300" r="3" fill="#ffffff" class="set2" />
+  <circle cx="50" cy="20" r="2" fill="#ffffff" class="set2" />
+  <circle cx="150" cy="120" r="2" fill="#ffffff" class="set2" />
+  <circle cx="250" cy="350" r="2.5" fill="#ffffff" class="set2" />
+
+  <!-- Set 3 -->
+  <circle cx="340" cy="301" r="2" fill="#ffffff" class="set3" />
+  <circle cx="680" cy="200" r="2.5" fill="#ffffff" class="set3" />
+  <circle cx="220" cy="383" r="3" fill="#ffffff" class="set3" />
+  <circle cx="450" cy="150" r="2" fill="#ffffff" class="set3" />
+  <circle cx="640" cy="50" r="2.5" fill="#ffffff" class="set3" />
+  <circle cx="440" cy="300" r="3" fill="#ffffff" class="set2" />
+  <circle cx="550" cy="100" r="3" fill="#ffffff" class="set2" />
+  <circle cx="620" cy="200" r="2.5" fill="#ffffff" class="set2" />
+  <circle cx="750" cy="400" r="2.5" fill="#ffffff" class="set2" />
+  <circle cx="720" cy="30" r="2" fill="#ffffff" class="set2" />
+  <circle cx="688" cy="220" r="2.5" fill="#ffffff" class="set2" />
+  <circle cx="270" cy="180" r="3" fill="#ffffff" class="set2" />
+
+  <!-- Additional stars for 100 total -->
+  <!-- Continue assigning stars to set1, set2, and set3 -->
+</svg>

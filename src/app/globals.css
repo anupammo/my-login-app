@@ -6,11 +6,34 @@
   font-weight: 300;
   font-style: normal;
 }
-.login-bg {
-  background-image: url('https://images.pexels.com/photos/162622/facebook-login-office-laptop-business-162622.jpeg?auto=compress&cs=tinysrgb&w=600');
-  background-position: bottom;
+
+.card {
+  /* From https://css.glass */
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+body{
+  background: linear-gradient(to bottom, #001f3f, #1a237e, #311b92);
+  /* background-image: url('/public/img/rocks.svg');
+  background-size: cover;
+  background-position: top; */
+}
+
+.rocks-bg {
+  position: absolute;
+  width: 100vw;
+  bottom: 0;
+  height: 150px;
+  filter: drop-shadow(2px 4px 6px #666);
+  background-image: url(/img/rocks.svg);
   background-size: contain;
-  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-repeat: repeat-x;
 }
 
 body div.bg-image {
@@ -21,16 +44,24 @@ body div.bg-image {
   /* padding-bottom: 5vh; */
 }
 
+img {
+  transition: .3s;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
 .my-20 {
   margin-top: 15vh; 
   margin-bottom: 5vh;
 }
 
 .bg-image {
-  background-image: url('https://img.freepik.com/free-vector/gradient-starry-night-background-mountains_23-2148273612.jpg?t=st=1744716664~exp=1744720264~hmac=97cdaa120cd6cb8c6c8931bdbeb3de1376941a9de4808af90f2c94153225a44d&w=996');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-image: url('/img/night-sky.svg');
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
 }
 
 :root {

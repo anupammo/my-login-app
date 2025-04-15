@@ -10,7 +10,7 @@ export default function LogoutButton() {
   };
 
   return (
-    <button className="btn btn-outline-danger rounded-pill px-4" onClick={handleLogout}>
+    <button className="btn btn-outline-light rounded-0 px-4" onClick={handleLogout}>
       Logout
     </button>
   );

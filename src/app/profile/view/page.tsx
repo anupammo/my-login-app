@@ -51,29 +51,42 @@ export default function ProfileViewPage() {
       <section>
         <div className="container">
           <div className="row">
-            <div className="col-md-4 col-12"></div>
-            <div className="col-md-4 col-12">
-              <div className="card border-0 my-20">
-                <div className="card-body">
-                  <h3 className="text-center">
-                    <span className="lead">Welcome, </span>
-                    <span className="d-block text-uppercase text-success fs-3"> {profile.name}</span>
-                  </h3>
-                  <img className='img-fluid rounded-circle d-block mx-auto my-3' src="../img/login-now.png" width={200} alt="" />
-                  <p className="text-center">
-                    <strong>Email —</strong> {profile.email}
-                  </p>
-                  <div className="text-center">
+            <div className="col-md-3 col-12"></div>
+            <div className="col-md-6 col-12">
+              <div className="card text-white my-20">
+                <div className="card-body p-5">
+                  <div className="row">
+                    <div className="col">
+                      <h3 className="mt-3">
+                        <span className="lead">Welcome, </span>
+                        <span className="d-block text-uppercase fs-3"> {profile.name}</span>
+                      </h3>
+                      <hr className="border-white border-2 opacity-100 w-50" />
+                      <hr className="border-white border-2 opacity-100 w-25" />
+                      <hr className="border-white border-2 opacity-100 w-50" />
+                      <p className="">
+                        <strong>Email :</strong> 
+                        <span className="lead d-block fs-6"> {profile.email}</span>
+                      </p>
+                    </div>
+                    <div className="col">
+                      <img className='img-fluid d-block mx-auto my-3' src="../img/user-image.png" width={200} alt="User Image" />
+                    </div>
+                  </div>
+                  <div className="text-center mt-4">
                     <Link href="/profile/edit">
-                      <button className="btn btn-outline-primary rounded-pill px-3 me-2">Edit Profile</button>
+                      <button className="btn btn-light shadow-none rounded-0 px-3 me-4">Edit Profile</button>
                     </Link>
                     {/* Include Logout Button */}
                     <LogoutButton />
                   </div>
+                  <p className="text-center mt-3">
+                    Forget you password? <a href="/reset-password" className="text-decoration-none">Reset now</a>
+                  </p>
                 </div>
               </div>
             </div>
-            <div className="col-md-4 col-12"></div>
+            <div className="col-md-3 col-12"></div>
           </div>
         </div>
       </section>

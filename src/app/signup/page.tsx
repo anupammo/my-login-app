@@ -49,16 +49,16 @@ export default function SignupPage() {
           <div className="row">
             <div className="col-md-3"></div>
             <div className="col-md-6">
-              <div className="card border-0 my-20">
+              <div className="card text-white my-20">
                 <div className="card-body px-5">
                   <div className="row">
                     <div className="col">
-                      <h3 className="lead text-success fw-bold fs-1 mt-3">Signup</h3>
-                      <hr className="border-success border-2 opacity-100 w-50" />
-                      <hr className="border-success border-2 opacity-100 w-25" />
+                      <h3 className="lead fw-bold fs-1 mt-5">Signup</h3>
+                      <hr className="border-white border-2 opacity-100 w-50" />
+                      <hr className="border-white border-2 opacity-100 w-25" />
                     </div>
                     <div className="col">
-                      <img className='img-fluid rounded-circle d-block mx-auto my-3' src="./img/signup-now.png" width={120} alt="" />
+                      <img className='img-fluid rounded-circle d-block mx-auto my-3' src="./img/signup-now.png" width={150} alt="Signup Image" />
                     </div>
                   </div>
                   {errorMsg && (
@@ -78,7 +78,7 @@ export default function SignupPage() {
                           <label htmlFor="username" className="form-label">Username</label>
                           <input
                             type="text"
-                            className="form-control"
+                            className="form-control bg-transparent text-white shadow-none border-bottom border-0 rounded-0 px-0"
                             id="username"
                             placeholder="Choose a username"
                             value={username}
@@ -92,7 +92,7 @@ export default function SignupPage() {
                           <label htmlFor="email" className="form-label">Email</label>
                           <input
                             type="email"
-                            className="form-control"
+                            className="form-control bg-transparent text-white shadow-none border-bottom border-0 rounded-0 px-0"
                             id="email"
                             placeholder="Enter your email"
                             value={email}
@@ -108,7 +108,7 @@ export default function SignupPage() {
                           <label htmlFor="password" className="form-label">Password</label>
                           <input
                             type="password"
-                            className="form-control"
+                            className="form-control bg-transparent text-white shadow-none border-bottom border-0 rounded-0 px-0"
                             id="password"
                             placeholder="Create a password"
                             value={password}
@@ -118,11 +118,11 @@ export default function SignupPage() {
                         </div>
                       </div>
                       <div className="col pt-2">
-                        <button type="submit" className="btn btn-outline-success w-100 mt-4">Sign Up</button>
+                        <button type="submit" className="btn btn-outline-light shadow-none rounded-0 w-100 mt-4">Sign Up</button>
                       </div>
                     </div>
                   </form>
-                  <p className="text-muted mt-3">
+                  <p className="text-center mt-3">
                     Already have an account? <a href="/login" className="text-decoration-none">Login here</a>
                   </p>
                 </div>

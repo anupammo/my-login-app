@@ -77,10 +77,10 @@ export default function EditProfilePage() {
       <section>
         <div className="container">
           <div className="row">
-            <div className="col-md-4 col-12"></div>
-            <div className="col-md-4 col-12">
-              <div className="card border-0 my-20">
-                <div className="card-body px-5">
+            <div className="col-md-3 col-12"></div>
+            <div className="col-md-6 col-12">
+              <div className="card text-white my-20">
+                <div className="card-body p-5">
                   {error && (
                     <div className="alert alert-danger" role="alert">
                       {error}
@@ -88,59 +88,49 @@ export default function EditProfilePage() {
                   )}
                   <div className="row">
                     <div className="col">
-                      <h1 className="lead fs-4">Welcome, 
-                        <span className="text-uppercase text-success"> {username}</span>
+                      <h1 className="lead fs-4 mt-3">Welcome, 
+                        <span className="text-uppercase fw-bold"> {username}</span>
                       </h1>
                       <p className="lead fs-6">You can update your Profile</p>
+                      <hr className="border-white border-2 opacity-100 w-50" />
+                      <hr className="border-white border-2 opacity-100 w-25" />
                     </div>
                     <div className="col">
-                      <img className='img-fluid rounded-circle d-block mx-auto' src="../img/login-now.png" width={120} alt="" />
+                      <img className='img-fluid d-block mx-auto' src="../img/user-image.png" width={150} alt="User Image" />
                     </div>
                   </div>                  
                   <form onSubmit={handleUpdateProfile}>
-                    <div className="mb-3">
-                      <label htmlFor="username" className="form-label">
-                        Username
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="username"
-                        value={username}
-                        readOnly
-                        disabled
-                      />
+                    <div className="row">
+                      <div className="col">
+                        <div className="mb-3">
+                          <label htmlFor="username" className="form-label">Username</label>
+                          <input type="text" className="form-control bg-transparent text-white shadow-none border-bottom border-0 rounded-0 px-0" id="username"
+                            value={username} readOnly disabled />
+                        </div>
+                      </div>
+                      <div className="col">
+                        <div className="mb-3">
+                          <label htmlFor="email" className="form-label">Email</label>
+                          <input type="email" className="form-control bg-transparent text-white shadow-none border-bottom border-0 rounded-0 px-0"
+                            placeholder="Enter your new email" value={email}
+                            onChange={(e) => setEmail(e.target.value)} required />
+                        </div>
+                      </div>
                     </div>
-                    <div className="mb-3">
-                      <label htmlFor="email" className="form-label">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="email"
-                        placeholder="Enter your new email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div className="text-center">
-                      <button type="submit" className="btn btn-outline-success rounded-pill px-3 me-2">Update Now</button>
+                    <div className="text-center mt-4">
+                      <button type="submit" className="btn btn-light shadow-none rounded-0 px-3 me-4">Update Now</button>
                       <Link href="/profile/view">
-                        <button type="submit" className="btn btn-outline-primary rounded-pill px-3">View Profile</button>
+                        <button type="submit" className="btn btn-outline-light shadow-none rounded-0 px-3">View Profile</button>
                       </Link>
                     </div>
                   </form>
-                  <p className="text-center mt-3">
-                    <small className="text-muted">
-                      Ensure your details are accurate.
-                    </small>
+                  <p className="text-center mt-4 mb-0">
+                    <small>Ensure your details are accurate.</small>
                   </p>
                 </div>
               </div>
-            <div className="col-md-4 col-12"></div>
             </div>
+            <div className="col-md-3 col-12"></div>
           </div>
         </div>
       </section>
