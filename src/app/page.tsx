@@ -78,20 +78,20 @@ export default function HomePage() {
             <div className="col-md-3 col-12"></div>
             <div className="col-md-3 col-12">
               <Link href="/login" className='nav-link'>
-                <div className="card bg-transparent border-0">
+                <div className="card border-0">
                   <div className="card-body">
-                    <img className='img-fluid rounded-circle' src="./img/login-now.png" alt="" />
-                    <p className="lead text-white text-center my-3">Login Now ..</p>
+                    <img className='img-fluid rounded' src="./img/login-now.png" alt="" />
+                    <p className="lead text-primary text-center fw-bold my-3">Login Now ..</p>
                   </div>
                 </div>
               </Link>
             </div>
             <div className="col-md-3 col-12">
-              <div className="card bg-transparent border-0">
+              <div className="card border-0">
                 <div className="card-body">
                   <Link href="/signup" className='nav-link'>
-                    <img className='img-fluid rounded-circle' src="./img/signup-now.png" alt="" />
-                    <p className="lead text-white text-center my-3">Signup Now ..</p>
+                    <img className='img-fluid rounded' src="./img/signup-now.png" alt="" />
+                    <p className="lead text-success text-center fw-bold my-3">Signup Now ..</p>
                   </Link>
                 </div>
               </div>
