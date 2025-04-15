@@ -3,7 +3,9 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useSession } from "next-auth/react";
+import ShootingStarsBG from "@/components/ShootingStarsBG";
 
 export default function EditProfilePage() {
   const { data: session, status } = useSession();
@@ -70,60 +72,78 @@ export default function EditProfilePage() {
   }
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card shadow-lg">
-            <div className="card-header bg-info text-white text-center">
-              <h3>Edit Profile</h3>
-            </div>
-            <div className="card-body">
-              {error && (
-                <div className="alert alert-danger" role="alert">
-                  {error}
+    <div className="bg-image">
+      <ShootingStarsBG />
+      <section>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4 col-12"></div>
+            <div className="col-md-4 col-12">
+              <div className="card border-0 my-20">
+                <div className="card-body px-5">
+                  {error && (
+                    <div className="alert alert-danger" role="alert">
+                      {error}
+                    </div>
+                  )}
+                  <div className="row">
+                    <div className="col">
+                      <h1 className="lead fs-4">Welcome, 
+                        <span className="text-uppercase text-success"> {username}</span>
+                      </h1>
+                      <p className="lead fs-6">You can update your Profile</p>
+                    </div>
+                    <div className="col">
+                      <img className='img-fluid rounded-circle d-block mx-auto' src="../img/login-now.png" width={120} alt="" />
+                    </div>
+                  </div>                  
+                  <form onSubmit={handleUpdateProfile}>
+                    <div className="mb-3">
+                      <label htmlFor="username" className="form-label">
+                        Username
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="username"
+                        value={username}
+                        readOnly
+                        disabled
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label htmlFor="email" className="form-label">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        placeholder="Enter your new email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="text-center">
+                      <button type="submit" className="btn btn-outline-success rounded-pill px-3 me-2">Update Now</button>
+                      <Link href="/profile/view">
+                        <button type="submit" className="btn btn-outline-primary rounded-pill px-3">View Profile</button>
+                      </Link>
+                    </div>
+                  </form>
+                  <p className="text-center mt-3">
+                    <small className="text-muted">
+                      Ensure your details are accurate.
+                    </small>
+                  </p>
                 </div>
-              )}
-              <form onSubmit={handleUpdateProfile}>
-                <div className="mb-3">
-                  <label htmlFor="username" className="form-label">
-                    Username
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="username"
-                    value={username}
-                    readOnly
-                    disabled
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="email" className="form-label">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    placeholder="Enter your new email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-                <button type="submit" className="btn btn-primary w-100">
-                  Update Profile
-                </button>
-              </form>
-            </div>
-            <div className="card-footer text-center">
-              <small className="text-muted">
-                Ensure your details are accurate.
-              </small>
+              </div>
+            <div className="col-md-4 col-12"></div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

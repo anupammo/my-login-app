@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import ShootingStarsBG from "@/components/ShootingStarsBG";
 import LogoutButton from "@/components/LogoutButton";
 
 export default function ProfileViewPage() {
@@ -45,25 +46,37 @@ export default function ProfileViewPage() {
   }
 
   return (
-    <div className="container mt-5">
-      <div className="card shadow-lg">
-        <div className="card-header bg-primary text-white text-center">
-          <h3>User Profile</h3>
+    <div className="bg-image">
+      <ShootingStarsBG />
+      <section>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4 col-12"></div>
+            <div className="col-md-4 col-12">
+              <div className="card border-0 my-20">
+                <div className="card-body">
+                  <h3 className="text-center">
+                    <span className="lead">Welcome, </span>
+                    <span className="d-block text-uppercase text-success fs-3"> {profile.name}</span>
+                  </h3>
+                  <img className='img-fluid rounded-circle d-block mx-auto my-3' src="../img/login-now.png" width={200} alt="" />
+                  <p className="text-center">
+                    <strong>Email —</strong> {profile.email}
+                  </p>
+                  <div className="text-center">
+                    <Link href="/profile/edit">
+                      <button className="btn btn-outline-primary rounded-pill px-3 me-2">Edit Profile</button>
+                    </Link>
+                    {/* Include Logout Button */}
+                    <LogoutButton />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4 col-12"></div>
+          </div>
         </div>
-        <div className="card-body">
-          <h4>Welcome, {profile.name}</h4>
-          <p>
-            <strong>Email:</strong> {profile.email}
-          </p>
-          {/* Include Logout Button */}
-          <LogoutButton />
-        </div>
-        <div className="card-footer text-center">
-          <Link href="/profile/edit">
-            <button className="btn btn-secondary">Edit Profile</button>
-          </Link>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
